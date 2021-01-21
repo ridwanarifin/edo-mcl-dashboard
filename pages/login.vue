@@ -1,11 +1,16 @@
 <template>
   <v-container>
-    <v-card class="mx-auto pa-10" max-width="500" rounded="">
+    <v-card
+      class="mx-auto pa-10"
+      max-width="500"
+      rounded=""
+    >
       <v-img
         class="mx-auto mb-10"
         :src="require('~/static/icon.png')"
         :lazy-src="require('~/static/icon.png')"
-        max-width="190"
+        min-width="auto"
+        max-width="270"
       >
         <template #placeholder>
           <v-row
@@ -21,14 +26,20 @@
         </template>
       </v-img>
 
-      <validation-observer ref="observer" v-slot="{ handleSubmit }">
+      <validation-observer
+        ref="observer"
+        v-slot="{ handleSubmit }"
+      >
         <form @submit.prevent="handleSubmit(on_submit)">
-          <validation-provider v-slot="{ valid, errors }" name="e-mail" rules="required|email">
+          <validation-provider
+            v-slot="{ errors }"
+            name="e-mail"
+            rules="required|email"
+          >
             <v-text-field
               v-model="forms.email"
               class="mt-2"
               label="Email"
-              :success="valid"
               :loading="pending"
               :disabled="pending"
               :error-messages="errors"
@@ -39,12 +50,15 @@
             />
           </validation-provider>
 
-          <validation-provider v-slot="{ valid, errors }" name="password" rules="required">
+          <validation-provider
+            v-slot="{ errors }"
+            name="password"
+            rules="required"
+          >
             <v-text-field
               v-model="forms.password"
               class="mt-2"
               label="Password"
-              :success="valid"
               :disabled="pending"
               :loading="pending"
               :error-messages="errors"
@@ -53,7 +67,7 @@
               outlined
               required
               clearable
-              @click:append="show = !show"
+              @click:append.stop="show = !show"
             />
           </validation-provider>
 

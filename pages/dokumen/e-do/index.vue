@@ -441,11 +441,6 @@ export default {
       this.tabelData = notPickedUp && notPickedUp
       this.tabelDataFilter = notPickedUp && notPickedUp
     },
-
-    // statusSearch (val) {
-    //   const filteredEdo = val === 'ALL' || val === undefined ? this.tabelData : _.filter (this.tabelData, { status: val })
-    //   this.tabelDataFilter= filteredEdo
-    // },
     houseBlSearch (newVal) {
       const filteredEdo = !newVal
         ? this.tabelData
@@ -538,11 +533,14 @@ export default {
      * Submit filter
      */
     on_submit_filter () {
-      const filteredStatusEdo = this.statusSearch === 'ALL' || this.statusSearch === undefined
+      const filteredStatusEdo = this.statusSearch === 'ALL' ||
+        this.statusSearch === undefined
         ? this.tabelData
         : _.filter(this.tabelData, { status: this.statusSearch })
       const filteredDatebetweenEdo = _.filter(filteredStatusEdo, (data) => {
-        if (!this.dateFrom && !this.dateTo) { return true } else if (!this.dateTo) {
+        if (!this.dateFrom && !this.dateTo) {
+          return true
+        } else if (!this.dateTo) {
           return this.$moment(data.created_at).isSameOrAfter(this.dateFrom)
         } else if (!this.dateFrom) {
           return this.$moment(data.created_at).isSameOrBefore(this.dateTo)

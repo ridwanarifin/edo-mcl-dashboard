@@ -14,7 +14,7 @@
 
       <v-col cols="auto" class="pt-0">
         <v-skeleton-loader :loading="!$auth.$state.loggedIn" type="chip">
-          <v-menu transition="slide-y-transition" offset-y open-on-hover close-on-content-click>
+          <v-menu transition="slide-y-transition" offset-y close-on-content-click>
             <template #activator="{on, attrs}">
               <div class="text-h6 text-capitalize">
                 Hi, {{ $auth.user.role }} {{ $auth.user.name }}

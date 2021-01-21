@@ -47,7 +47,6 @@ export default {
     return {
       isLoading: false,
       dataSelect: {
-        shipperName: ['a', 'b'],
         consigneeName: [],
         portOfLoading: [],
         portOfDischarge: [],
