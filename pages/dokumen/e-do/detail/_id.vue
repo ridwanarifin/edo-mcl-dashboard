@@ -83,7 +83,7 @@
               </div>
               <v-skeleton-loader v-if="loadingDelete || $fetchState.pending" loading type="table-cell" />
               <div v-else class="font-weight-bold">
-                {{ created_at_formated }}
+                {{ $moment(edo.created_at, 'DD-MM-YYYY hh:mm') }}
               </div>
             </v-col>
             <!-- end Created at -->
@@ -623,6 +623,7 @@ export default {
     crete_pdf (e) {
       const edo = this.edo
       const dateNow = this.$moment().format('DD/MM/YYYY')
+      const arrivalDateFormatted = this.$moment(this.edo.arrival_date).format('DD/MM/YYYY')
 
       this.to_data_url(require('~/static/icon.png'), function (dataURL) {
         const docDefinition = {
@@ -641,7 +642,7 @@ export default {
                           style: 'label'
                         },
                         {
-                          text: edo.shipper_name,
+                          text: edo.shipper_name + '\r\n' + edo.shipper_address || '-',
                           style: 'content'
                         }
                       ]
@@ -714,7 +715,7 @@ export default {
                           style: 'label'
                         },
                         {
-                          text: edo.consignee_name,
+                          text: edo.consignee_name + '\r\n' + edo.consignee_address || '-',
                           style: 'content'
                         }
                       ]
@@ -798,7 +799,7 @@ export default {
                           style: 'label'
                         },
                         {
-                          text: edo.arrival_date,
+                          text: arrivalDateFormatted,
                           style: 'content'
                         }
                       ]

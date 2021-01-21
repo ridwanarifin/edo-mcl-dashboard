@@ -59,7 +59,7 @@ export default {
 
   computed: {
     time () {
-      return this.momentDate.format('HH:mm:ss')
+      return this.momentDate.format('HH:mm')
     },
     date () {
       return this.momentDate.format('DD MMM YYYY')
