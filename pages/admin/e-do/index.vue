@@ -518,9 +518,6 @@ export default {
         this.get_all_edo(),
         this.get_count_edos()
       ])
-        .then(() => {
-          this.$toast.clear()
-        })
     },
     /**
      * Get All e-DO
@@ -533,10 +530,11 @@ export default {
           this.tabelData = data
           this.tabelDataFilter = data
         }
+        this.$toast.clear()
       } catch (error) {
-        const response = error.response.data
-        const message = response && response.message && ` , ${response.message}`
-        this.$toast.global.app_error(`Failed to load all e-DO${message}`)
+        console.warn(error)
+        this.$toast.clear()
+        this.$toast.global.app_error('Failed to load all e-DO')
       }
     },
     /**

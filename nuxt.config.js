@@ -25,7 +25,15 @@ export default {
   },
 
   router: {
-    middleware: ['auth', 'breadcrumbs']
+    prefetchLinks: true,
+    middleware: ['auth', 'breadcrumbs'],
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: '404',
+        path: '*',
+        redirect: '/'
+      })
+    }
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
