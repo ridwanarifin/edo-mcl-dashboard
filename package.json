@@ -1,17 +1,17 @@
 {
   "name": "e-DO",
-  "version": "0.3.5-beta.1",
-  "description": "Dashboard SCL",
+  "version": "0.3.6",
+  "description": "Dashboard MCL",
   "private": true,
   "author": "ridwan <ridwanarifin@pm.me>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ridwanarifin/edo-dashboard.git"
+    "url": "git+https://github.com/ridwanarifin/edo-mcl-dashboard.git"
   },
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "3000"
+      "port": "3001"
     }
   },
   "scripts": {
